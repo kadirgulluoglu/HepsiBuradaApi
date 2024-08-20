@@ -1,0 +1,50 @@
+﻿using System;
+using HepsiBuradaApi.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace HepsiBuradaApi.Persistence.Configurations
+{
+    public class ProductConfiguration : IEntityTypeConfiguration<Product>
+    {
+        public void Configure(EntityTypeBuilder<Product> builder)
+        {
+            Product product = new()
+            {
+                Id = 1,
+                BrandId = 1,
+                Title = "Macbook Air",
+                Description = "M2",
+                Price = 25000,
+                Discount = 10,
+                CreatedDate = DateTime.UtcNow,
+                IsDeleted = false,
+            };
+            Product product2 = new()
+            {
+                Id = 2,
+                BrandId = 1,
+                Title = "Macbook Pro",
+                Description = "M2",
+                Price = 40000,
+                Discount = 20,
+                CreatedDate = DateTime.UtcNow,
+                IsDeleted = false,
+            };
+            Product product3 = new()
+            {
+                Id = 3,
+                BrandId = 1,
+                Title = "Kot Pantolon",
+                Description = "",
+                Price = 40000,
+                Discount = 20,
+                CreatedDate = DateTime.UtcNow,
+                IsDeleted = false,
+            };
+
+            builder.HasData(product, product2, product3);
+        }
+    }
+}
+

@@ -5,9 +5,7 @@ namespace HepsiBuradaApi.Domain.Entities
 {
     public class Category : EntityBase
     {
-        public Category()
-        {
-        }
+        public Category() { }
 
         public Category(int parentId, string name, int priorty)
         {
@@ -20,7 +18,7 @@ namespace HepsiBuradaApi.Domain.Entities
         public required string Name { get; set; }
         public required int Priorty { get; set; }
         public ICollection<Detail> Details { get; set; }
-        ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
 
     }
 }

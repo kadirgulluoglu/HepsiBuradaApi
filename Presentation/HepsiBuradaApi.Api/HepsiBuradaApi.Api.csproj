@@ -14,6 +14,15 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.7.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.7.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.7.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\HepsiBuradaApi.Persistence\HepsiBuradaApi.Persistence.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
