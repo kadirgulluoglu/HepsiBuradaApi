@@ -1,9 +1,8 @@
-﻿using System;
-using HepsiBuradaApi.Domain.Common;
+﻿using HepsiBuradaApi.Domain.Common;
 
 namespace HepsiBuradaApi.Domain.Entities
 {
-	public class Brand : EntityBase
+    public class Brand : EntityBase
 
 	{
         public Brand()
