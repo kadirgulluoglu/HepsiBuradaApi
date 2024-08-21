@@ -10,16 +10,27 @@
     <None Remove="Interfaces\" />
     <None Remove="Interfaces\Repositories\" />
     <None Remove="Interfaces\UnitOfWorks\" />
+    <None Remove="Features\" />
+    <None Remove="Features\Products\" />
+    <None Remove="Features\Products\Command\" />
+    <None Remove="Features\Products\Queries\" />
+    <None Remove="Features\Products\Queries\GetAllProducts\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Interfaces\Repositories\" />
     <Folder Include="Interfaces\UnitOfWorks\" />
+    <Folder Include="Features\" />
+    <Folder Include="Features\Products\" />
+    <Folder Include="Features\Products\Command\" />
+    <Folder Include="Features\Products\Queries\" />
+    <Folder Include="Features\Products\Queries\GetAllProducts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HepsiBuradaApi.Domain\HepsiBuradaApi.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="MediatR" Version="12.4.0" />
   </ItemGroup>
 </Project>
