@@ -9,10 +9,12 @@
   <ItemGroup>
     <None Remove="Interfaces\" />
     <None Remove="Interfaces\Repositories\" />
+    <None Remove="Interfaces\UnitOfWorks\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Interfaces\Repositories\" />
+    <Folder Include="Interfaces\UnitOfWorks\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HepsiBuradaApi.Domain\HepsiBuradaApi.Domain.csproj" />

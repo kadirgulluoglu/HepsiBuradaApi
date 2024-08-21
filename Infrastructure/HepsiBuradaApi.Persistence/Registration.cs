@@ -1,6 +1,8 @@
-﻿using HepsiBuradaApi.Application.Interfaces.Repositories;
+﻿using HepsiBuradaApi.Application.Interfaces;
+using HepsiBuradaApi.Application.Interfaces.Repositories;
 using HepsiBuradaApi.Persistence.Context;
 using HepsiBuradaApi.Persistence.Repositories;
+using HepsiBuradaApi.Persistence.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,7 @@ namespace HepsiBuradaApi.Persistence
             opt.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>)); 
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 } 
