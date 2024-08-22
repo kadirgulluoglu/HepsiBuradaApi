@@ -24,6 +24,9 @@
     <ProjectReference Include="..\..\Infrastructure\HepsiBuradaApi.Persistence\HepsiBuradaApi.Persistence.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\..\Core\HepsiBuradaApi.Mapper\HepsiBuradaApi.Mapper.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controllers\" />

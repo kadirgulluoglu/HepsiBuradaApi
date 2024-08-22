@@ -34,7 +34,7 @@ namespace HepsiBuradaApi.Persistence.Configurations
             Product product3 = new()
             {
                 Id = 3,
-                BrandId = 1,
+                BrandId = 2,
                 Title = "Kot Pantolon",
                 Description = "",
                 Price = 40000,
@@ -43,7 +43,22 @@ namespace HepsiBuradaApi.Persistence.Configurations
                 IsDeleted = false,
             };
 
-            builder.HasData(product, product2, product3);
+            Product product4 = new()
+            {
+                Id = 4,
+                BrandId = 3,
+                Title = "Lenova x5",
+                Description = "",
+                Price = 3000,
+                Discount = 20,
+                CreatedDate = DateTime.UtcNow,
+                IsDeleted = false,
+            };
+
+
+            
+
+            builder.HasData(product, product2, product3,product4);
         }
     }
 }

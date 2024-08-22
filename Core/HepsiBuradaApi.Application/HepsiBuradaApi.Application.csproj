@@ -15,6 +15,8 @@
     <None Remove="Features\Products\Command\" />
     <None Remove="Features\Products\Queries\" />
     <None Remove="Features\Products\Queries\GetAllProducts\" />
+    <None Remove="Interfaces\AutoMapper\" />
+    <None Remove="DTOs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -25,6 +27,8 @@
     <Folder Include="Features\Products\Command\" />
     <Folder Include="Features\Products\Queries\" />
     <Folder Include="Features\Products\Queries\GetAllProducts\" />
+    <Folder Include="Interfaces\AutoMapper\" />
+    <Folder Include="DTOs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HepsiBuradaApi.Domain\HepsiBuradaApi.Domain.csproj" />
