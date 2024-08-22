@@ -64,21 +64,21 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(2550),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(160),
                             IsDeleted = false,
                             Name = "Apple"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(2550),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(160),
                             IsDeleted = false,
                             Name = "Mavi"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(2550),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(160),
                             IsDeleted = false,
                             Name = "Lenova"
                         });
@@ -116,7 +116,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3080),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(740),
                             IsDeleted = false,
                             Name = "Elektronik",
                             ParentId = 0,
@@ -125,7 +125,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3080),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(740),
                             IsDeleted = false,
                             Name = "Moda",
                             ParentId = 0,
@@ -134,7 +134,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3080),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(740),
                             IsDeleted = false,
                             Name = "Bilgisayar",
                             ParentId = 1,
@@ -143,7 +143,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3080),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(740),
                             IsDeleted = false,
                             Name = "Telefon",
                             ParentId = 1,
@@ -152,7 +152,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3080),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(740),
                             IsDeleted = false,
                             Name = "Kadın",
                             ParentId = 2,
@@ -196,7 +196,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3480),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(1160),
                             Description = "Mavi",
                             IsDeleted = false,
                             Title = "Rengi"
@@ -205,7 +205,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3480),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(1160),
                             Description = "15x20",
                             IsDeleted = false,
                             Title = "Boyutu"
@@ -214,7 +214,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         {
                             Id = 3,
                             CategoryId = 5,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3480),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(1160),
                             Description = "Ahşap",
                             IsDeleted = false,
                             Title = "Tür"
@@ -223,7 +223,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         {
                             Id = 4,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3480),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(1160),
                             Description = "Kare",
                             IsDeleted = false,
                             Title = "Şekil"
@@ -272,7 +272,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3840),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(1540),
                             Description = "M2",
                             Discount = 10m,
                             IsDeleted = false,
@@ -283,7 +283,7 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         {
                             Id = 2,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3850),
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(1540),
                             Description = "M2",
                             Discount = 20m,
                             IsDeleted = false,
@@ -293,13 +293,24 @@ namespace HepsiBuradaApi.Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            BrandId = 1,
-                            CreatedDate = new DateTime(2024, 8, 17, 9, 53, 41, 179, DateTimeKind.Utc).AddTicks(3850),
+                            BrandId = 2,
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(1540),
                             Description = "",
                             Discount = 20m,
                             IsDeleted = false,
                             Price = 40000m,
                             Title = "Kot Pantolon"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BrandId = 3,
+                            CreatedDate = new DateTime(2024, 8, 22, 13, 8, 6, 73, DateTimeKind.Utc).AddTicks(1550),
+                            Description = "",
+                            Discount = 20m,
+                            IsDeleted = false,
+                            Price = 3000m,
+                            Title = "Lenova x5"
                         });
                 });
 

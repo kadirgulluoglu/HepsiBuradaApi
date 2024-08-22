@@ -66,9 +66,6 @@ namespace HepsiBuradaApi.Persistence.Repositories
             return Table.Where(predicate);
         }
 
-
-
-
     }
 }
 
