@@ -17,6 +17,10 @@
     <None Remove="Features\Products\Queries\GetAllProducts\" />
     <None Remove="Interfaces\AutoMapper\" />
     <None Remove="DTOs\" />
+    <None Remove="Features\Products\Command\CreateProduct\" />
+    <None Remove="Features\Products\Command\UpdateProduct\" />
+    <None Remove="Features\Products\Command\DeleteProduct\" />
+    <None Remove="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -29,6 +33,10 @@
     <Folder Include="Features\Products\Queries\GetAllProducts\" />
     <Folder Include="Interfaces\AutoMapper\" />
     <Folder Include="DTOs\" />
+    <Folder Include="Features\Products\Command\CreateProduct\" />
+    <Folder Include="Features\Products\Command\UpdateProduct\" />
+    <Folder Include="Features\Products\Command\DeleteProduct\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HepsiBuradaApi.Domain\HepsiBuradaApi.Domain.csproj" />
@@ -36,5 +44,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="MediatR" Version="12.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="SendGrid" Version="9.29.3" />
   </ItemGroup>
 </Project>
