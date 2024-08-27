@@ -21,6 +21,7 @@
     <None Remove="Features\Products\Command\UpdateProduct\" />
     <None Remove="Features\Products\Command\DeleteProduct\" />
     <None Remove="Exceptions\" />
+    <None Remove="Behavior\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -37,6 +38,7 @@
     <Folder Include="Features\Products\Command\UpdateProduct\" />
     <Folder Include="Features\Products\Command\DeleteProduct\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="Behavior\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HepsiBuradaApi.Domain\HepsiBuradaApi.Domain.csproj" />
@@ -46,5 +48,7 @@
     <PackageReference Include="MediatR" Version="12.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="SendGrid" Version="9.29.3" />
+    <PackageReference Include="FluentValidation" Version="11.9.2" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
   </ItemGroup>
 </Project>

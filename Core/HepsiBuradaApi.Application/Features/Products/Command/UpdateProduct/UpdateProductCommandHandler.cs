@@ -6,7 +6,7 @@ using MediatR;
 
 namespace HepsiBuradaApi.Application.Features.Products.Command.UpdateProduct
 {
-    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest>
+    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -17,7 +17,7 @@ namespace HepsiBuradaApi.Application.Features.Products.Command.UpdateProduct
             this.mapper = mapper;
         }
 
-        public async Task Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)
         {
             var product = await unitOfWork.GetReadRepository<Product>()
                   .GetAsync(x => x.Id == request.Id && !x.IsDeleted);
@@ -30,6 +30,8 @@ namespace HepsiBuradaApi.Application.Features.Products.Command.UpdateProduct
             await unitOfWork.GetWriteRepository<ProductCategory>()
                 .HardDeleteRangeAsync(productCategories);
 
+
+
             foreach (var item in request.CategoryIds)
                 await unitOfWork.GetWriteRepository<ProductCategory>()
                 .AddAsync(new()
@@ -39,9 +41,12 @@ namespace HepsiBuradaApi.Application.Features.Products.Command.UpdateProduct
                 });
 
 
-            await unitOfWork.GetWriteRepository<Product>().UpdateAsync(product);
+
+            await unitOfWork.GetWriteRepository<Product>().UpdateAsync(map);
 
             await unitOfWork.SaveAsync();
+
+            return Unit.Value;
         }
     }
 }

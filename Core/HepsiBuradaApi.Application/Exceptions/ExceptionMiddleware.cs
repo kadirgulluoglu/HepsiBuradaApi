@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using SendGrid.Helpers.Errors.Model;
 
@@ -24,6 +24,14 @@ namespace HepsiBuradaApi.Application.Exceptions
             int statusCode = GetStatusCode(exception);
             context.Response.ContentType = MediaTypeNames.Application.Json;
             context.Response.StatusCode = statusCode;
+
+            if (exception.GetType() == typeof(ValidationException))
+                return context.Response.WriteAsync(new ExceptionModel
+                {
+                    Errors = ((ValidationException)exception).Errors.Select(x => x.ErrorMessage),
+                    StatusCode = StatusCodes.Status400BadRequest,
+                }.ToString());
+
 
             List<string> errors = new()
             {
