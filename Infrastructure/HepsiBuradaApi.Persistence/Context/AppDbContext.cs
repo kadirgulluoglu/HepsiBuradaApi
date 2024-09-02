@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Reflection;
 using HepsiBuradaApi.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace HepsiBuradaApi.Persistence.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User, Role, Guid>
     {
 
-        public AppDbContext() {
+        public AppDbContext()
+        {
 
         }
 

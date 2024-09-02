@@ -17,7 +17,7 @@ namespace HepsiBuradaApi.Application
         {
             var assembly = Assembly.GetExecutingAssembly();
             services.AddTransient<ExceptionMiddleware>();
-            services.AddRulesFromAssemblyContaining(assembly,typeof(BaseRules));
+            services.AddRulesFromAssemblyContaining(assembly, typeof(BaseRules));
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
             services.AddValidatorsFromAssembly(assembly);
             ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr");
