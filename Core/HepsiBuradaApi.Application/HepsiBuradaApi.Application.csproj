@@ -22,6 +22,9 @@
     <None Remove="Features\Products\Command\DeleteProduct\" />
     <None Remove="Exceptions\" />
     <None Remove="Behavior\" />
+    <None Remove="Bases\" />
+    <None Remove="Features\Products\Rules\" />
+    <None Remove="Features\Products\Exception\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -39,6 +42,9 @@
     <Folder Include="Features\Products\Command\DeleteProduct\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Behavior\" />
+    <Folder Include="Bases\" />
+    <Folder Include="Features\Products\Rules\" />
+    <Folder Include="Features\Products\Exception\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HepsiBuradaApi.Domain\HepsiBuradaApi.Domain.csproj" />

@@ -36,7 +36,6 @@ namespace HepsiBuradaApi.Application.Exceptions
             List<string> errors = new()
             {
                 exception.Message,
-                exception?.InnerException?.ToString() ?? "",
             };
 
             return context.Response.WriteAsync(new ExceptionModel

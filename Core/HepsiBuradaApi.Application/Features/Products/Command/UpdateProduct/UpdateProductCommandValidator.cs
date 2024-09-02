@@ -12,7 +12,6 @@ namespace HepsiBuradaApi.Application.Features.Products.Command.UpdateProduct
             RuleFor(x => x.Price).GreaterThan(0).WithName("Fiyat");
             RuleFor(x => x.Discount).GreaterThan(0).WithName("İndirim Oranı");
             RuleFor(x => x.CategoryIds).NotEmpty().Must(c => c.Any()).WithName("Kategoriler");
-
         }
     }
 }
