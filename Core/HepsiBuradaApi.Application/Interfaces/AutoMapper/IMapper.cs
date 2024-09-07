@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace HepsiBuradaApi.Application.Interfaces.AutoMapper
 {
     public interface IMapper
@@ -10,7 +11,5 @@ namespace HepsiBuradaApi.Application.Interfaces.AutoMapper
         TDestination Map<TDestination, TSource>(object source, string? ignore = null);
 
         IList<TDestination> Map<TDestination, TSource>(IList<object> source, string? ignore = null);
-
     }
 }
-

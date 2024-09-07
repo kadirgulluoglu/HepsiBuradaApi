@@ -1,8 +1,8 @@
 ﻿using System;
+
 namespace HepsiBuradaApi.Domain.Common
 {
-	public interface IEntityBase
-	{
-	}
+    public interface IEntityBase
+    {
+    }
 }
-

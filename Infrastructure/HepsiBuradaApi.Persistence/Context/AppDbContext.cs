@@ -9,15 +9,12 @@ namespace HepsiBuradaApi.Persistence.Context
 {
     public class AppDbContext : IdentityDbContext<User, Role, Guid>
     {
-
         public AppDbContext()
         {
-
         }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {
-
         }
 
 
@@ -26,7 +23,6 @@ namespace HepsiBuradaApi.Persistence.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
-
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,10 +35,9 @@ namespace HepsiBuradaApi.Persistence.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("User ID=user1;Password=changeme;Host=localhost;Port=5432;Database=myDatabase;");
+                optionsBuilder.UseNpgsql(
+                    "User ID=user1;Password=changeme;Host=localhost;Port=5432;Database=myDatabase;");
             }
         }
-
     }
 }
-

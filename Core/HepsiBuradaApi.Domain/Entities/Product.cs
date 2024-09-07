@@ -5,11 +5,10 @@ namespace HepsiBuradaApi.Domain.Entities
 {
     public class Product : EntityBase
     {
-
         public Product()
         {
-
         }
+
         public Product(string title, string description, int brandId, decimal price, decimal discount)
         {
             Title = title;
@@ -27,10 +26,7 @@ namespace HepsiBuradaApi.Domain.Entities
         public Brand Brand { get; set; }
         public ICollection<ProductCategory> ProductCategories { get; set; }
 
-      
 
         //public required String ImagePath { get; set; }
-
     }
 }
-

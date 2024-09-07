@@ -4,7 +4,8 @@ using MediatR;
 
 namespace HepsiBuradaApi.Application.Behaviour
 {
-    public class FluentValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+    public class FluentValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+        where TRequest : IRequest<TResponse>
     {
         private readonly IEnumerable<IValidator<TRequest>> validators;
 
@@ -14,7 +15,8 @@ namespace HepsiBuradaApi.Application.Behaviour
         }
 
 
-        public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+        public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
+            CancellationToken cancellationToken)
         {
             var context = new ValidationContext<TRequest>(request);
             var failtures = validators
@@ -32,4 +34,3 @@ namespace HepsiBuradaApi.Application.Behaviour
         }
     }
 }
-

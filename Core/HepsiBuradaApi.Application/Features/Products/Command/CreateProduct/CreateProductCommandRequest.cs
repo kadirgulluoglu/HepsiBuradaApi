@@ -13,4 +13,3 @@ namespace HepsiBuradaApi.Application.Features.Products.Command.CreateProduct
         public IList<int> CategoryIds { get; set; }
     }
 }
-

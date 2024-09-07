@@ -13,4 +13,3 @@ namespace HepsiBuradaApi.Mapper
         }
     }
 }
-

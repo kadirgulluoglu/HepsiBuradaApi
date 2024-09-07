@@ -56,8 +56,6 @@ namespace HepsiBuradaApi.Persistence.Configurations
             };
 
             builder.HasData(category, category1, category2, category3, category4);
-
         }
     }
 }
-

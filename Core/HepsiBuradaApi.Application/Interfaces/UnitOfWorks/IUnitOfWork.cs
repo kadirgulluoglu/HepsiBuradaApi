@@ -10,7 +10,5 @@ namespace HepsiBuradaApi.Application.Interfaces
         IWriteRepository<T> GetWriteRepository<T>() where T : class, IEntityBase, new();
         Task<int> SaveAsync();
         int Save();
-
     }
 }
-

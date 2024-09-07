@@ -37,7 +37,9 @@ namespace HepsiBuradaApi.Mapper.AutoMapper
         protected void Config<TDestination, TSource>(int depth = 5, string? ignore = null)
         {
             var typePair = new TypePair(typeof(TSource), typeof(TDestination));
-            if (typePairs.Any(a => a.DestinationType == typePair.DestinationType && a.SourceType == typePair.SourceType) && ignore is null)
+            if (typePairs.Any(a =>
+                    a.DestinationType == typePair.DestinationType && a.SourceType == typePair.SourceType) &&
+                ignore is null)
                 return;
 
             typePairs.Add(typePair);
@@ -46,7 +48,8 @@ namespace HepsiBuradaApi.Mapper.AutoMapper
                 foreach (var item in typePairs)
                 {
                     if (ignore is not null)
-                        cfg.CreateMap(item.SourceType, item.DestinationType).MaxDepth(depth).ForMember(ignore, x => x.Ignore()).ReverseMap();
+                        cfg.CreateMap(item.SourceType, item.DestinationType).MaxDepth(depth)
+                            .ForMember(ignore, x => x.Ignore()).ReverseMap();
                     else
                         cfg.CreateMap(item.SourceType, item.DestinationType).MaxDepth(depth).ReverseMap();
                 }
@@ -55,4 +58,3 @@ namespace HepsiBuradaApi.Mapper.AutoMapper
         }
     }
 }
-

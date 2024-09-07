@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace HepsiBuradaApi.Infrastructure.Tokens
 {
     public class TokenSettings
@@ -14,4 +15,3 @@ namespace HepsiBuradaApi.Infrastructure.Tokens
         }
     }
 }
-

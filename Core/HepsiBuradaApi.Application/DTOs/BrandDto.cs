@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace HepsiBuradaApi.Application.DTOs
 {
     public class BrandDto
@@ -7,4 +8,3 @@ namespace HepsiBuradaApi.Application.DTOs
         public string name { get; set; }
     }
 }
-

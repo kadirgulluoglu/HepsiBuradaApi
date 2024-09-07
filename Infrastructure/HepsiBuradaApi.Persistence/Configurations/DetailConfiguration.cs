@@ -49,4 +49,3 @@ namespace HepsiBuradaApi.Persistence.Configurations
         }
     }
 }
-

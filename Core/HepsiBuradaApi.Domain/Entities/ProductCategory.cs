@@ -11,4 +11,3 @@ namespace HepsiBuradaApi.Domain.Entities
         public Category Category { get; set; }
     }
 }
-

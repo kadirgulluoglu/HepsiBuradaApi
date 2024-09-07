@@ -9,7 +9,5 @@ namespace HepsiBuradaApi.Application.Exceptions
         {
             app.UseMiddleware<ExceptionMiddleware>();
         }
-
     }
 }
-

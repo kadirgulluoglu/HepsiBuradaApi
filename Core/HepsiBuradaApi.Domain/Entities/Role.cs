@@ -10,4 +10,3 @@ namespace HepsiBuradaApi.Domain.Entities
         }
     }
 }
-
