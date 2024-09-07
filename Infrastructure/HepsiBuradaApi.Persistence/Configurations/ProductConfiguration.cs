@@ -56,10 +56,7 @@ namespace HepsiBuradaApi.Persistence.Configurations
             };
 
 
-
-
             builder.HasData(product, product2, product3, product4);
         }
     }
 }
-

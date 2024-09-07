@@ -14,4 +14,3 @@ namespace HepsiBuradaApi.Application.Features.Products.Command.UpdateProduct
         public IList<int> CategoryIds { get; set; }
     }
 }
-

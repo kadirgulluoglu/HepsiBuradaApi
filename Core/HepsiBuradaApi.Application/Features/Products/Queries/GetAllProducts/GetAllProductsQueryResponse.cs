@@ -13,4 +13,3 @@ namespace HepsiBuradaApi.Application.Features.Products.Queries.GetAllProducts
         public BrandDto Brand { get; set; }
     }
 }
-

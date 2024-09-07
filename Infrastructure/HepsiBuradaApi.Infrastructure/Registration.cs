@@ -21,8 +21,6 @@ namespace HepsiBuradaApi.Infrastructure
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
-
             }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
             {
                 opt.SaveToken = true;
@@ -31,7 +29,8 @@ namespace HepsiBuradaApi.Infrastructure
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"] ?? "")),
+                    IssuerSigningKey =
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])),
                     ValidateLifetime = false,
                     ValidIssuer = configuration["JWT:Issuer"],
                     ValidAudience = configuration["JWT:Audience"],
@@ -41,4 +40,3 @@ namespace HepsiBuradaApi.Infrastructure
         }
     }
 }
-

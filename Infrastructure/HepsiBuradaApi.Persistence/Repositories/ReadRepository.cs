@@ -16,9 +16,14 @@ namespace HepsiBuradaApi.Persistence.Repositories
             this.context = context;
         }
 
-        private DbSet<T> Table { get => context.Set<T>(); }
+        private DbSet<T> Table
+        {
+            get => context.Set<T>();
+        }
 
-        public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false)
+        public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false)
         {
             IQueryable<T> queryable = Table;
             if (!enableTracking) queryable = queryable.AsNoTracking();
@@ -31,7 +36,10 @@ namespace HepsiBuradaApi.Persistence.Repositories
         }
 
 
-        public async Task<IList<T>> GetAllByPagingAsync(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false, int pageIndex = 0, int pageSize = 3)
+        public async Task<IList<T>> GetAllByPagingAsync(Expression<Func<T, bool>>? predicate = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false, int pageIndex = 0,
+            int pageSize = 3)
         {
             IQueryable<T> queryable = Table;
             if (!enableTracking) queryable = queryable.AsNoTracking();
@@ -43,7 +51,8 @@ namespace HepsiBuradaApi.Persistence.Repositories
             return await queryable.Skip((pageIndex) * pageSize).Take(pageSize).ToListAsync();
         }
 
-        public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
+        public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
         {
             IQueryable<T> queryable = Table;
             if (!enableTracking) queryable = queryable.AsNoTracking();
@@ -65,7 +74,5 @@ namespace HepsiBuradaApi.Persistence.Repositories
             if (!enableTracking) Table.AsNoTracking();
             return Table.Where(predicate);
         }
-
     }
 }
-

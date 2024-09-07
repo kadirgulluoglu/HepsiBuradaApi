@@ -24,7 +24,5 @@ namespace HepsiBuradaApi.Persistence.UnitOfWorks
         IReadRepository<T> IUnitOfWork.GetReadRepository<T>() => new ReadRepository<T>(context);
 
         IWriteRepository<T> IUnitOfWork.GetWriteRepository<T>() => new WriteRepository<T>(context);
-
     }
 }
-

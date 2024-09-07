@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 var env = builder.Environment;
@@ -26,7 +28,8 @@ builder.Services.AddApplication();
 builder.Services.AddCustomMapper();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "HepsiBurada Api", Version = "v1", Description = "HepsiBurada Api Swagger Doc" });
+    c.SwaggerDoc("v1",
+        new OpenApiInfo { Title = "HepsiBurada Api", Version = "v1", Description = "HepsiBurada Api Swagger Doc" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
         Name = "Authorization",
@@ -40,14 +43,14 @@ builder.Services.AddSwaggerGen(c =>
     {
         {
             new OpenApiSecurityScheme
-        {
-            Reference = new OpenApiReference
             {
-                Type = ReferenceType.SecurityScheme,
-                Id = "Bearer",
-            }
-        },
-        Array.Empty<string>()
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer",
+                }
+            },
+            Array.Empty<string>()
         }
     });
 });

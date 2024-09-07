@@ -1,7 +1,7 @@
 ﻿using HepsiBuradaApi.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using HepsiBuradaApi.Application.Interfaces.Repositories;
- 
+
 namespace HepsiBuradaApi.Persistence.Repositories
 {
     public class WriteRepository<T> : IWriteRepository<T> where T : class, IEntityBase, new()
@@ -13,7 +13,10 @@ namespace HepsiBuradaApi.Persistence.Repositories
             this.context = context;
         }
 
-        private DbSet<T> Table { get => context.Set<T>(); }
+        private DbSet<T> Table
+        {
+            get => context.Set<T>();
+        }
 
         public async Task AddAsync(T entity)
         {
@@ -24,11 +27,13 @@ namespace HepsiBuradaApi.Persistence.Repositories
         {
             await Table.AddRangeAsync(entities);
         }
+
         public async Task<T> UpdateAsync(T entity)
         {
             await Task.Run(() => Table.Update(entity));
             return entity;
         }
+
         public async Task HardDeleteAsync(T entity)
         {
             await Task.Run(() => Table.Remove(entity));
@@ -43,7 +48,5 @@ namespace HepsiBuradaApi.Persistence.Repositories
         {
             await Task.Run(() => Table.Update(entity));
         }
-
-
     }
 }

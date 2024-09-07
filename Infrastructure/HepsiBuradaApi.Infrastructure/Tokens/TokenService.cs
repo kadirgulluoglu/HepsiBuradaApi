@@ -13,42 +13,38 @@ namespace HepsiBuradaApi.Infrastructure.Tokens
 {
     public class TokenService : IToken
     {
-        private readonly TokenSettings tokenSettings;
-        private readonly UserManager<User> userManager;
+        private readonly TokenSettings _tokenSettings;
+        private readonly UserManager<User> _userManager;
 
         public TokenService(IOptions<TokenSettings> options, UserManager<User> userManager)
         {
-            tokenSettings = options.Value;
-            this.userManager = userManager;
+            _tokenSettings = options.Value;
+            _userManager = userManager;
         }
 
         public async Task<JwtSecurityToken> CreateToken(User user, IList<Role> roles)
         {
             var claims = new List<Claim>()
             {
-                new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
-                new Claim (ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.Email,user.Email),
-
+                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new(JwtRegisteredClaimNames.Email, user.Email)
             };
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
 
-            foreach (var role in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role.ToString()));
-            }
 
-            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings.Secret));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenSettings.Secret));
 
-            JwtSecurityToken? token = new JwtSecurityToken(
-                issuer: tokenSettings.Issuer,
-                audience: tokenSettings.Audience,
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(tokenSettings.TokenValidityInMunitues),
+            var token = new JwtSecurityToken(
+                _tokenSettings.Issuer,
+                _tokenSettings.Audience,
+                claims,
+                expires: DateTime.Now.AddMinutes(_tokenSettings.TokenValidityInMunitues),
                 signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
-                );
+            );
 
 
-            await userManager.AddClaimsAsync(user, claims);
+            await _userManager.AddClaimsAsync(user, claims);
             return token;
         }
 
@@ -67,23 +63,21 @@ namespace HepsiBuradaApi.Infrastructure.Tokens
                 ValidateIssuer = false,
                 ValidateAudience = false,
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings.Secret)),
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenSettings.Secret))
             };
 
 
             JwtSecurityTokenHandler tokenHandler = new();
-            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+            var principal =
+                tokenHandler.ValidateToken(token, tokenValidationParameters, out var securityToken);
 
             if (securityToken is not JwtSecurityToken jwtSecurityToken ||
                 !jwtSecurityToken.Header.Alg
-                .Equals(SecurityAlgorithms.HmacSha256,
-                StringComparison.InvariantCultureIgnoreCase))
-            {
+                    .Equals(SecurityAlgorithms.HmacSha256,
+                        StringComparison.InvariantCultureIgnoreCase))
                 throw new SecurityTokenException("Token Bulunamadı");
-            }
 
             return principal;
         }
     }
 }
-

@@ -23,4 +23,3 @@ namespace HepsiBuradaApi.Persistence.Configurations
         }
     }
 }
-

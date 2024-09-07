@@ -26,7 +26,5 @@ namespace HepsiBuradaApi.Application.Interfaces.Repositories
         Task<int> CountAsync(Expression<Func<T, bool>> predicate);
 
         IQueryable<T> Find(Expression<Func<T, bool>> predicate, bool enableTracking);
-
     }
 }
-

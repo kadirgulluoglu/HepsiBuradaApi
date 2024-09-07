@@ -6,7 +6,9 @@ namespace HepsiBuradaApi.Domain.Entities
     public class Detail : EntityBase
 
     {
-        public Detail() { }
+        public Detail()
+        {
+        }
 
         public Detail(string title, string description, int categoryId)
         {
@@ -19,9 +21,5 @@ namespace HepsiBuradaApi.Domain.Entities
         public string Description { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-
-
-
     }
 }
-

@@ -15,4 +15,3 @@ namespace HepsiBuradaApi.Application.Features.Products.Command.UpdateProduct
         }
     }
 }
-

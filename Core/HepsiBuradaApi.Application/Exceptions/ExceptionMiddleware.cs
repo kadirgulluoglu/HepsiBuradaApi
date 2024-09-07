@@ -19,31 +19,28 @@ namespace HepsiBuradaApi.Application.Exceptions
                 await HandleExceptionAsync(context, ex);
             }
         }
+
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             int statusCode = GetStatusCode(exception);
             context.Response.ContentType = MediaTypeNames.Application.Json;
-            context.Response.StatusCode = statusCode;
+            context.Response.StatusCode = 200;
 
             if (exception.GetType() == typeof(ValidationException))
                 return context.Response.WriteAsync(new ExceptionModel
                 {
-                    Errors = ((ValidationException)exception).Errors.Select(x => x.ErrorMessage),
+                    Errors = ((ValidationException)exception).Errors.Select(x => x.ErrorMessage).First(),
                     StatusCode = StatusCodes.Status400BadRequest,
+                    Succes = false
                 }.ToString());
 
 
-            List<string> errors = new()
-            {
-                exception.Message,
-            };
-
             return context.Response.WriteAsync(new ExceptionModel
             {
-                Errors = errors,
+                Errors = exception.Message,
                 StatusCode = statusCode,
+                Succes = false
             }.ToString());
-
         }
 
         private static int GetStatusCode(Exception exception) => exception switch
@@ -53,8 +50,5 @@ namespace HepsiBuradaApi.Application.Exceptions
             ValidationException => StatusCodes.Status422UnprocessableEntity,
             _ => StatusCodes.Status500InternalServerError,
         };
-
-
     }
 }
-
