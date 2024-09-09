@@ -12,7 +12,7 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommandRequest
             .MinimumLength(2)
             .WithName("İsim Soyisim");
 
-        RuleFor(x => x.Mail)
+        RuleFor(x => x.Email)
             .NotEmpty()
             .EmailAddress();
 
@@ -22,7 +22,7 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommandRequest
             .MinimumLength(6)
             .WithName("Şifre");
 
-        RuleFor(x => x.Password)
+        RuleFor(x => x.ConfirmPassword)
             .NotEmpty()
             .MaximumLength(50)
             .MinimumLength(6)

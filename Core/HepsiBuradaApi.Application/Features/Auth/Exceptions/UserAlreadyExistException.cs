@@ -4,7 +4,5 @@ namespace HepsiBuradaApi.Application.Features.Auth.Exceptions;
 
 public class UserAlreadyExistException : BaseException
 {
-    public UserAlreadyExistException() : base("Böyle bir Kullanıcı zaten var!")
-    {
-    }
+    public UserAlreadyExistException() : base("Böyle bir Kullanıcı zaten var!") { }
 }

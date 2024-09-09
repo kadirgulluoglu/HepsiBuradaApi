@@ -1,10 +1,11 @@
+using HepsiBuradaApi.Application.Features.Auth.Command.Login;
 using HepsiBuradaApi.Application.Features.Auth.Command.Register;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HepsiBuradaApi.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -15,11 +16,18 @@ namespace HepsiBuradaApi.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterCommandRequest request)
         {
             await _mediator.Send(request);
-            return Ok();
+            return StatusCode(StatusCodes.Status201Created);
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginCommandRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
     }
 }

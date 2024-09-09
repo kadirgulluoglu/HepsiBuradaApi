@@ -16,7 +16,7 @@ namespace HepsiBuradaApi.Infrastructure
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<TokenSettings>(configuration.GetSection("JWT"));
-            services.AddTransient<IToken, TokenService>();
+            services.AddTransient<ITokenService, TokenService>();
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

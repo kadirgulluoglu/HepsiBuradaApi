@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace HepsiBuradaApi.Infrastructure.Tokens
 {
-    public class TokenService : IToken
+    public class TokenService : ITokenService
     {
         private readonly TokenSettings _tokenSettings;
         private readonly UserManager<User> _userManager;
@@ -22,7 +22,7 @@ namespace HepsiBuradaApi.Infrastructure.Tokens
             _userManager = userManager;
         }
 
-        public async Task<JwtSecurityToken> CreateToken(User user, IList<Role> roles)
+        public async Task<JwtSecurityToken> CreateToken(User user, IList<string> roles)
         {
             var claims = new List<Claim>()
             {
@@ -30,7 +30,7 @@ namespace HepsiBuradaApi.Infrastructure.Tokens
                 new(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new(JwtRegisteredClaimNames.Email, user.Email)
             };
-            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenSettings.Secret));

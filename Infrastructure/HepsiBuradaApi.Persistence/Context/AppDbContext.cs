@@ -9,13 +9,9 @@ namespace HepsiBuradaApi.Persistence.Context
 {
     public class AppDbContext : IdentityDbContext<User, Role, Guid>
     {
-        public AppDbContext()
-        {
-        }
+        public AppDbContext() { }
 
-        public AppDbContext(DbContextOptions options) : base(options)
-        {
-        }
+        public AppDbContext(DbContextOptions options) : base(options) { }
 
 
         public DbSet<Brand> Brands { get; set; }
