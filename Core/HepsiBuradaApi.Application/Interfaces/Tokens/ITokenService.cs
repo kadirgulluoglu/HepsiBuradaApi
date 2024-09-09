@@ -5,11 +5,10 @@ using HepsiBuradaApi.Domain.Entities;
 
 namespace HepsiBuradaApi.Application.Interfaces.Tokens
 {
-    public interface IToken
+    public interface ITokenService
     {
-        Task<JwtSecurityToken> CreateToken(User user, IList<Role> roles);
+        Task<JwtSecurityToken> CreateToken(User user, IList<string> roles);
         string GenerateRefreshToken();
         ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token);
     }
 }
-

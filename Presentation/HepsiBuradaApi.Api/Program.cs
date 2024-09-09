@@ -3,6 +3,7 @@ using HepsiBuradaApi.Application;
 using HepsiBuradaApi.Mapper;
 using HepsiBuradaApi.Application.Exceptions;
 using HepsiBuradaApi.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,11 +34,10 @@ builder.Services.AddSwaggerGen(c =>
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
         Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer",
+        Type = SecuritySchemeType.Http,
+        Scheme = JwtBearerDefaults.AuthenticationScheme,
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = @"'Bearer' yazıp boşluk bıraktıktan sonra Token'ı girebilirsiniz",
     });
     c.AddSecurityRequirement(new OpenApiSecurityRequirement()
     {

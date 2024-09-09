@@ -12,7 +12,7 @@ public class BaseHandler
     public readonly IHttpContextAccessor httpContextAccessor;
     public readonly string userId;
 
-    protected BaseHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+    public BaseHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor)
     {
         this.unitOfWork = unitOfWork;
         this.mapper = mapper;

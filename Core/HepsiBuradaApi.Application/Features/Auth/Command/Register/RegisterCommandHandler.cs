@@ -31,10 +31,11 @@ public class RegisterCommandHandler : BaseHandler, IRequestHandler<RegisterComma
 
     public async Task<Unit> Handle(RegisterCommandRequest request, CancellationToken cancellationToken)
     {
-        await _authRules.UserShouldNotBeExist(await _userManager.FindByEmailAsync(request.Mail));
+        var response = await _userManager.FindByEmailAsync(request.Email);
+        await _authRules.UserShouldNotBeExist(await _userManager.FindByEmailAsync(request.Email));
 
         User user = mapper.Map<User, RegisterCommandRequest>(request);
-        user.UserName = request.Mail;
+        user.UserName = request.Email;
         user.SecurityStamp = Guid.NewGuid().ToString();
 
 
