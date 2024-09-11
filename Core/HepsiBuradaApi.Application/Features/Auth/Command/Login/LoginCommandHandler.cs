@@ -1,5 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using HepsiBuradaApi.Application.Bases;
+using HepsiBuradaApi.Application.DTOs;
 using HepsiBuradaApi.Application.Features.Auth.Rules;
 using HepsiBuradaApi.Application.Interfaces;
 using HepsiBuradaApi.Application.Interfaces.AutoMapper;
@@ -57,12 +58,12 @@ public class LoginCommandHandler : BaseHandler, IRequestHandler<LoginCommandRequ
 
         await _userManager.SetAuthenticationTokenAsync(user, "Default", "AccessToken", tokenValue);
 
-
         return new()
         {
             Token = tokenValue,
             Expiration = token.ValidTo,
             RefreshToken = refreshToken,
+            user = mapper.Map<UserDto, User>(user)
         };
     }
 }
