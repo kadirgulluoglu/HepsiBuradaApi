@@ -1,6 +1,6 @@
 # 🎉 HepsiBurada API 🚀
 
-Welcome to the **HepsiBurada API** documentation! This API powers various features for user authentication, product and brand management, using a robust architecture and modern technologies. Let's dive into the details! 🔍
+Welcome to the **HepsiBurada API** documentation! This API supports features like user authentication, product and brand management, built on a robust architecture. Let's dive into the details! 🔍
 
 ## Table of Contents
 - [Overview](#overview)
@@ -11,109 +11,82 @@ Welcome to the **HepsiBurada API** documentation! This API powers various featur
 - [Security](#security-🛡️)
 
 ## Overview
-This API provides a powerful and scalable platform for managing users, brands, and products in the HepsiBurada ecosystem. It uses **CQRS**, **Onion Architecture**, and **JWT Authentication** to ensure clean, maintainable, and secure code. 🎯
+This API provides a scalable platform for managing users, brands, and products within the HepsiBurada ecosystem. Built with modern technologies such as **CQRS**, **Onion Architecture**, and **JWT Authentication**, the API ensures clean, maintainable, and secure code. 🎯
 
 - **Version:** v1
 - **Base URL:** `/api`
 - **Architecture:** Onion Architecture 🧅
+- **Database:** PostgreSQL 🐘
+- **Containerization:** Docker 🐳
 
 ## Authentication Endpoints 🔐
 
-Here are the endpoints for handling user authentication and token management.
+Endpoints for user authentication and token management are listed below.
 
 ### Register
 - **POST** `/api/Register`
-- Registers a new user into the system.
-- **Request Body:** `RegisterCommandRequest`
-- **Response:** 
-  - `200`: OK
+- Registers a new user.
 
 ### Login
 - **POST** `/api/Login`
-- Authenticates a user and returns a JWT token.
-- **Request Body:** `LoginCommandRequest`
-- **Response:** 
-  - `200`: OK
-  - 🔑 **JWT Token** is provided in the response for secure API access.
+- Authenticates the user and returns a JWT token. 
+  - 🔑 **JWT Token** is provided for secure API access.
 
 ### Refresh Token
 - **POST** `/api/RefreshToken`
 - Refreshes the JWT token using a valid refresh token.
-- **Request Body:** `RefreshTokenCommandRequest`
-- **Response:** 
-  - `200`: OK
 
 ### Logout
 - **POST** `/api/Logout`
-- Logs out the user by invalidating the tokens.
-- **Response:** 
-  - `200`: OK
+- Invalidates the user's tokens and logs them out.
 
 ## Brand Endpoints 🏷️
 
-Manage brands efficiently with caching and performance improvements!
+Efficiently manage brands with caching and performance enhancements!
 
 ### Create Brand
 - **POST** `/api/Brand`
-- Adds **1 million random brands** using the `Faker` library for testing large datasets! 📊
-- **Request Body:** `CreateBrandsCommandRequest`
-- **Response:** 
-  - `200`: OK
-  - Uses **Unit of Work** to handle transaction management. 💼
+- Uses **Faker** library to add **1 million random brands**! 📊
+  - **Unit of Work** is utilized in all operations to ensure transaction consistency. 💼
 
 ### Get Brands
 - **GET** `/api/Brand`
-- Fetches brands with **Redis caching** for faster retrieval. ⚡
-- **Response:** 
-  - `200`: OK
+- Retrieves brands using **Redis** caching for faster access. ⚡
 
 ## Product Endpoints 🛒
-
-Operations related to product management, fully integrated with CQRS.
 
 ### Create Product
 - **POST** `/api/Product`
 - Adds a new product.
-- **Request Body:** `CreateProductCommandRequest`
-- **Response:** 
-  - `200`: OK
 
 ### Update Product
 - **PUT** `/api/Product`
 - Updates an existing product.
-- **Request Body:** `UpdateProductCommandRequest`
-- **Response:** 
-  - `200`: OK
 
 ### Delete Product
 - **DELETE** `/api/Product`
 - Deletes a product by its ID.
-- **Parameters:** 
-  - `Id`: `int32`
-- **Response:** 
-  - `200`: OK
 
 ### Get Products
 - **GET** `/api/Product`
 - Retrieves all products.
-- **Response:** 
-  - `200`: OK
 
 ## Technologies Used ⚙️
 
-Here are the cutting-edge technologies that power this API:
+Key modern technologies powering this API:
 
-- **JWT Authentication** for secure access 🔐
-- **CQRS** (Command Query Responsibility Segregation) for clear separation of read and write logic ✂️
-- **Onion Architecture** for a well-organized and maintainable code structure 🧅
-- **Unit of Work** to handle transactions and maintain consistency 💼
-- **Redis** for caching frequently requested data ⚡
-- **Faker** to generate a large dataset of random brands 📊
-- **MediatR** for handling commands and queries in a decoupled way 🎯
-- **AutoMapper** for mapping between data models 🔄
-- **FluentValidation** for clean and robust request validation ✅
+- **JWT Authentication** ensures secure access 🔐
+- **CQRS** (Command Query Responsibility Segregation) separates reading and writing logic ✂️
+- **Onion Architecture** promotes clean, maintainable, and scalable code 🧅
+- **Unit of Work** is used across all operations for transaction management 💼
+- **Redis** caches frequently requested data for faster retrieval ⚡
+- **Faker** generates large datasets for random brand creation 📊
+- **MediatR** handles commands and queries independently 🎯
+- **AutoMapper** simplifies object mapping between layers 🔄
+- **FluentValidation** ensures clean and robust request validation ✅
+- **PostgreSQL** powers the database 🐘
+- **Docker** is used for containerization 🐳
 
 ## Security 🛡️
 
-This API uses **JWT Bearer** tokens for authentication. To access secure endpoints, include the `Authorization` header Your JWT Token
-
+This API uses **JWT Bearer** tokens for authentication. To access secure endpoints, include your JWT token in the `Authorization` header
