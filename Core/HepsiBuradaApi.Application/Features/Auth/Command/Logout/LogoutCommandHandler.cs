@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HepsiBuradaApi.Application.Features.Auth.Command.Logout;
 
-public class LogoutCommandHandler : BaseHandler, IRequestHandler<LogoutCommandRequest>
+public class LogoutCommandHandler : BaseHandler, IRequestHandler<LogoutCommandRequest, LogoutCommandResponse>
 {
     private readonly UserManager<User> _userManager;
 
@@ -19,10 +19,12 @@ public class LogoutCommandHandler : BaseHandler, IRequestHandler<LogoutCommandRe
         _userManager = userManager;
     }
 
-    public async Task Handle(LogoutCommandRequest request, CancellationToken cancellationToken)
+    public async Task<LogoutCommandResponse> Handle(LogoutCommandRequest request, CancellationToken cancellationToken)
     {
         User? user = await _userManager.FindByIdAsync(userId);
         user.RefreshToken = null;
         user.RefreshTokenExpiryTime = null;
+
+        return new();
     }
 }

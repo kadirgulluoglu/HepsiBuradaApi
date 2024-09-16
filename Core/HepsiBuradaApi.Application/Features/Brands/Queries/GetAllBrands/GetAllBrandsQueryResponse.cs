@@ -1,7 +1,10 @@
-namespace HepsiBuradaApi.Application.Features.Brands.Queries.GetAllBrands;
+using System.Text.Json.Serialization;
+using HepsiBuradaApi.Application.Bases;
+using HepsiBuradaApi.Application.DTOs;
 
 public class GetAllBrandsQueryResponse
 {
-    public string Name { get; set; }
-    public bool IsDeleted { get; set; }
+    [JsonPropertyName("brands")] public IList<BrandDto> Brands { get; set; }
+
+    [JsonPropertyName("totalCount")] public int TotalCount { get; set; }
 }
