@@ -13,8 +13,6 @@ Welcome to the **HepsiBurada API** documentation! This API supports features lik
 ## Overview
 This API provides a scalable platform for managing users, brands, and products within the HepsiBurada ecosystem. Built with modern technologies such as **CQRS**, **Onion Architecture**, and **JWT Authentication**, the API ensures clean, maintainable, and secure code. 🎯
 
-- **Version:** v1
-- **Base URL:** `/api`
 - **Architecture:** Onion Architecture 🧅
 - **Database:** PostgreSQL 🐘
 - **Containerization:** Docker 🐳
