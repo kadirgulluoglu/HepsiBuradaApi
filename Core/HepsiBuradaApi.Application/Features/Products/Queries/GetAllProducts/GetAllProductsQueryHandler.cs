@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace HepsiBuradaApi.Application.Features.Products.Queries.GetAllProducts
 {
     public class
-        GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQueryRequest, IList<GetAllProductsQueryResponse>>
+        GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQueryRequest, GetAllProductsQueryResponse>
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -20,23 +20,31 @@ namespace HepsiBuradaApi.Application.Features.Products.Queries.GetAllProducts
             this.mapper = mapper;
         }
 
-        public async Task<IList<GetAllProductsQueryResponse>> Handle(GetAllProductsQueryRequest request,
+        public async Task<GetAllProductsQueryResponse> Handle(GetAllProductsQueryRequest request,
             CancellationToken cancellationToken)
         {
             var products = await unitOfWork.GetReadRepository<Product>()
-                .GetAllAsync(predicate: x => !x.IsDeleted, include: x => x.Include(b => b.Brand));
+                .GetAllByPagingAsync(predicate: x => !x.IsDeleted,
+                    include: x => x.Include(b => b.Brand).Include(c => c.ProductCategories),
+                    pageIndex: request.PageIndex,
+                    pageSize: request.PageSize
+                );
 
-            var brand = mapper.Map<BrandDto, Brand>(new Brand());
-
-            var map = mapper.Map<GetAllProductsQueryResponse, Product>(products);
-
-
-            foreach (var item in map)
+            foreach (var item in products)
             {
                 item.Price -= (item.Price * item.Discount / 100);
             }
 
-            return map;
+            var brand = mapper.Map<BrandDto, Brand>(new Brand());
+
+            var map = mapper.Map<ProductDto, Product>(products);
+
+
+            return new()
+            {
+                Product = map,
+                TotalCount = map.Count()
+            };
         }
     }
 }

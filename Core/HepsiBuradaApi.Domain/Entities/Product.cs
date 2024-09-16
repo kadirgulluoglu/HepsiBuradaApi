@@ -5,17 +5,18 @@ namespace HepsiBuradaApi.Domain.Entities
 {
     public class Product : EntityBase
     {
-        public Product()
-        {
-        }
+        public Product() { }
 
-        public Product(string title, string description, int brandId, decimal price, decimal discount)
+        public Product(string title, string description, int brandId, decimal price, decimal discount,
+            HashSet<ProductCategory> categoriesId)
         {
             Title = title;
             Description = description;
             BrandId = brandId;
             Price = price;
             Discount = discount;
+            ProductCategories = new HashSet<ProductCategory>();
+            ProductCategories = categoriesId;
         }
 
         public string Title { get; set; }
