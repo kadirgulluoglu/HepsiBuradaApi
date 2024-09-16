@@ -16,6 +16,7 @@ public class BrandsController : ControllerBase
         _mediator = mediator;
     }
 
+
     [HttpPost("Brand")]
     public async Task<IActionResult> PostBrand([FromBody] CreateBrandsCommandRequest request)
     {
@@ -24,9 +25,11 @@ public class BrandsController : ControllerBase
     }
 
     [HttpGet("Brand")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetBrand()
     {
-        await _mediator.Send(new GetAllBrandsQueryRequest());
-        return StatusCode(StatusCodes.Status201Created);
+        var response = await _mediator.Send(new GetAllBrandsQueryRequest());
+        return StatusCode(StatusCodes.Status200OK, response);
     }
 }

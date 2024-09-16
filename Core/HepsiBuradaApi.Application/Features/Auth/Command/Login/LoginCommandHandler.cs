@@ -42,8 +42,10 @@ public class LoginCommandHandler : BaseHandler, IRequestHandler<LoginCommandRequ
         bool checkPassword = user != null && await _userManager.CheckPasswordAsync(user, request.Password);
 
         await _authRules.EmailOrPasswordShouldNotBeInvalid(user, checkPassword);
+
         IList<string> roles = await _userManager.GetRolesAsync(user);
         JwtSecurityToken token = await _tokenService.CreateToken(user, roles);
+
         string refreshToken = _tokenService.GenerateRefreshToken();
 
         _ = int.TryParse(_configuration["Jwt:RefreshTokenValidityInMunitues"], out int refreshTokenValidityInMunitues);

@@ -3,8 +3,8 @@ using MediatR;
 
 namespace HepsiBuradaApi.Application.Features.Brands.Queries.GetAllBrands;
 
-public class GetAllBrandsQueryRequest : IRequest<IList<GetAllBrandsQueryResponse>>, ICacheableQuery
+public class GetAllBrandsQueryRequest : IRequest<GetAllBrandsQueryResponse>, ICacheableQuery
 {
-    public string CacheKey => "GetAllBrands";
+    public string CacheKey => "GetAllBrandi";
     public double CacheTime => 5;
 }
