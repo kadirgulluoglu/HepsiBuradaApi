@@ -16,6 +16,7 @@ This API provides a scalable platform for managing users, brands, and products w
 - **Architecture:** Onion Architecture 🧅
 - **Database:** PostgreSQL 🐘
 - **Containerization:** Docker 🐳
+- **Unit of Work** is utilized in all operations to ensure transaction consistency. 💼
 
 ## Authentication Endpoints 🔐
 
@@ -45,7 +46,6 @@ Efficiently manage brands with caching and performance enhancements!
 ### Create Brand
 - **POST** `/api/Brand`
 - Uses **Faker** library to add **1 million random brands**! 📊
-  - **Unit of Work** is utilized in all operations to ensure transaction consistency. 💼
 
 ### Get Brands
 - **GET** `/api/Brand`
