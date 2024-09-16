@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Http;
 
 namespace HepsiBuradaApi.Application.Features.Products.Command.CreateProduct
 {
-    public class CreateProductCommandHandler : BaseHandler, IRequestHandler<CreateProductCommandRequest, Unit>
+    public class CreateProductCommandHandler : BaseHandler,
+        IRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
     {
         private readonly ProductRules _productRules;
 
@@ -21,28 +22,40 @@ namespace HepsiBuradaApi.Application.Features.Products.Command.CreateProduct
             _productRules = productRules;
         }
 
-        public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
+        public async Task<CreateProductCommandResponse> Handle(CreateProductCommandRequest request,
+            CancellationToken cancellationToken)
         {
             IList<Product> products = await unitOfWork.GetReadRepository<Product>().GetAllAsync();
 
             await _productRules.ProductTitleMustNotBeSame(products, request.Title);
 
-            Product product = new(request.Title, request.Description, request.BrandId, request.Price, request.Discount);
 
-            await unitOfWork.GetWriteRepository<Product>().AddAsync(product);
-            if (await unitOfWork.SaveAsync() > 0)
+            HashSet<ProductCategory> productCategories = new HashSet<ProductCategory>();
+            foreach (int item in request.CategoriesId)
             {
-                foreach (int categoryId in request.CategoryIds)
-                    await unitOfWork.GetWriteRepository<ProductCategory>()
-                        .AddAsync(new()
-                        {
-                            ProductId = product.Id,
-                            CategoryId = categoryId
-                        });
-                await unitOfWork.SaveAsync();
+                productCategories.Add(new()
+                {
+                    CategoryId = item
+                });
             }
 
-            return Unit.Value;
+            Product product = new(request.Title, request.Description, request.BrandId, request.Price,
+                request.Discount, productCategories);
+
+            await unitOfWork.GetWriteRepository<Product>().AddAsync(product);
+            // if (await unitOfWork.SaveAsync() > 0)
+            // {
+            // foreach (int categoryId in request.CategoriesId)
+            //     await unitOfWork.GetWriteRepository<ProductCategory>()
+            //         .AddAsync(new()
+            //         {
+            //             ProductId = product.Id,
+            //             CategoryId = categoryId
+            //         });
+            //     await unitOfWork.SaveAsync();
+            // }
+
+            return new CreateProductCommandResponse();
         }
     }
 }

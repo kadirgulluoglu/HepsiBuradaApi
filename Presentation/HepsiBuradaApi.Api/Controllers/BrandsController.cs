@@ -24,9 +24,7 @@ public class BrandsController : ControllerBase
         return StatusCode(StatusCodes.Status201Created);
     }
 
-    [HttpGet("Brand")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [HttpGet("Brands")]
     public async Task<IActionResult> GetBrand()
     {
         var response = await _mediator.Send(new GetAllBrandsQueryRequest());

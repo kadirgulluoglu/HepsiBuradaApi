@@ -21,10 +21,9 @@ namespace HepsiBuradaApi.Api.Controllers
 
 
         [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> GetProductsAll()
+        public async Task<IActionResult> GetProductsAll([FromQuery] GetAllProductsQueryRequest request)
         {
-            var response = await _mediator.Send(new GetAllProductsQueryRequest());
+            var response = await _mediator.Send(request);
             return Ok(response);
         }
 

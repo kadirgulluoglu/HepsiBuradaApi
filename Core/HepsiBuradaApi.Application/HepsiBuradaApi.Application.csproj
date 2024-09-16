@@ -39,7 +39,6 @@
         <Folder Include="Features\Products\Queries\"/>
         <Folder Include="Features\Products\Queries\GetAllProducts\"/>
         <Folder Include="Interfaces\AutoMapper\"/>
-        <Folder Include="Features\Products\Command\CreateProduct\"/>
         <Folder Include="Features\Products\Command\UpdateProduct\"/>
         <Folder Include="Features\Products\Command\DeleteProduct\"/>
         <Folder Include="Exceptions\"/>
