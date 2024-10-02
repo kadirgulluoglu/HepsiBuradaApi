@@ -7,9 +7,9 @@ namespace HepsiBuradaApi.Application.Features.Products.Rules
 {
     public class ProductRules : BaseRules
     {
-        public Task ProductTitleMustNotBeSame(IList<Product> products, string requestTitle)
+        public Task ProductTitleMustNotBeSame(string title, string requestTitle)
         {
-            if (products.Any(x => x.Title == requestTitle)) throw new ProductTitleMustNotBeSameException();
+            if (title == requestTitle) throw new ProductTitleMustNotBeSameException();
             return Task.CompletedTask;
         }
     }

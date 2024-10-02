@@ -46,9 +46,9 @@ namespace HepsiBuradaApi.Persistence.Repositories
             if (include is not null) queryable = include(queryable);
             if (predicate is not null) queryable = queryable.Where(predicate);
             if (orderBy is not null)
-                return await orderBy(queryable).Skip((pageIndex) * pageSize).Take(pageSize).ToListAsync();
+                return await orderBy(queryable).Skip(pageIndex).Take(pageSize).ToListAsync();
 
-            return await queryable.Skip((pageIndex) * pageSize).Take(pageSize).ToListAsync();
+            return await queryable.Skip(pageIndex).Take(pageSize).ToListAsync();
         }
 
         public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate,

@@ -5,6 +5,6 @@ namespace HepsiBuradaApi.Application.Features.Brands.Queries.GetAllBrands;
 
 public class GetAllBrandsQueryRequest : IRequest<GetAllBrandsQueryResponse>, ICacheableQuery
 {
-    public string CacheKey => "GetAllBrandi";
+    public string CacheKey => "GetAllBrands";
     public double CacheTime => 5;
 }

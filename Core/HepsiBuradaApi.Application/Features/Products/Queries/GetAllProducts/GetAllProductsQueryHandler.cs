@@ -25,10 +25,16 @@ namespace HepsiBuradaApi.Application.Features.Products.Queries.GetAllProducts
         {
             var products = await unitOfWork.GetReadRepository<Product>()
                 .GetAllByPagingAsync(predicate: x => !x.IsDeleted,
-                    include: x => x.Include(b => b.Brand).Include(c => c.ProductCategories),
+                    include: x =>
+                        x.Include(b => b.Brand).Include(pc => pc.ProductCategories).ThenInclude(c => c.Category),
+                    orderBy: x => x.OrderByDescending(p => p.CreatedDate),
                     pageIndex: request.PageIndex,
                     pageSize: request.PageSize
                 );
+
+
+            int totalCount = await unitOfWork.GetReadRepository<Product>()
+                .CountAsync(predicate: x => !x.IsDeleted);
 
             foreach (var item in products)
             {
@@ -37,13 +43,20 @@ namespace HepsiBuradaApi.Application.Features.Products.Queries.GetAllProducts
 
             var brand = mapper.Map<BrandDto, Brand>(new Brand());
 
-            var map = mapper.Map<ProductDto, Product>(products);
 
+            var productMap = mapper.Map<ProductDto, Product>(products);
+
+            foreach (var productDto in productMap)
+            {
+                var product = products.First(p => p.Id == productDto.Id);
+                productDto.Categories =
+                    mapper.Map<CategoryDto, Category>(product.ProductCategories.Select(pc => pc.Category).ToList());
+            }
 
             return new()
             {
-                Product = map,
-                TotalCount = map.Count()
+                Product = productMap,
+                TotalCount = totalCount
             };
         }
     }

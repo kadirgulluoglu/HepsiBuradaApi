@@ -21,12 +21,13 @@ public class GetAllBrandsQueryHandler : BaseHandler,
 
         var brandMap = mapper.Map<BrandDto, Brand>(brands);
 
+        int totalCount = await unitOfWork.GetReadRepository<Brand>().CountAsync(predicate: b => !b.IsDeleted);
 
         // Yanıtı döndür
         return new GetAllBrandsQueryResponse()
         {
             Brands = brandMap,
-            TotalCount = brandMap.Count
+            TotalCount = totalCount
         };
     }
 }

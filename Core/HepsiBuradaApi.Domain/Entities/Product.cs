@@ -7,16 +7,13 @@ namespace HepsiBuradaApi.Domain.Entities
     {
         public Product() { }
 
-        public Product(string title, string description, int brandId, decimal price, decimal discount,
-            HashSet<ProductCategory> categoriesId)
+        public Product(string title, string description, int brandId, decimal price, decimal discount)
         {
             Title = title;
             Description = description;
             BrandId = brandId;
             Price = price;
             Discount = discount;
-            ProductCategories = new HashSet<ProductCategory>();
-            ProductCategories = categoriesId;
         }
 
         public string Title { get; set; }
